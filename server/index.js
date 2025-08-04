@@ -1,5 +1,6 @@
 require("dotenv").config();
 const { Router } = require("express");
+const path = require("path"); // <---- добавляем path
 const app = require("./config/express")();
 const { Telegraf } = require("telegraf");
 const { loader, sleep } = require("./utils");
@@ -23,16 +24,23 @@ loader(
 
 bot.telegram.setMyCommands(commands);
 
-bot.use(async(ctx, next) => {
-  // console.log(ctx);
+bot.use(async (ctx, next) => {
   await next();
 });
 
-bot.on("pre_checkout_query", async(ctx, test) => {
-  // console.log("payment", ctx.update.pre_checkout_query);
+bot.on("pre_checkout_query", async (ctx, test) => {
   await ctx.answerPreCheckoutQuery(true);
 });
 
 bot.catch(console.log);
 bot.launch();
-app.listen(4000);
+
+// Раздаём фронтенд
+app.use(require("express").static(path.join(__dirname, "../client/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
+
+app.listen(4000, "0.0.0.0", () => {
+  console.log("Server is running on http://0.0.0.0:4000");
+});
