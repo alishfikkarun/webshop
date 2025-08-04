@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "dbCreate": "cross-env MIGRATE_TOOL=true npx sequelize-cli db:create --config config/dbConfig.js",
     "mi": "cross-env MIGRATE_TOOL=true npx sequelize-cli db:migrate --config config/dbConfig.js",
     "miUndo": "cross-env MIGRATE_TOOL=true npx sequelize-cli db:migrate:undo --config config/dbConfig.js",
