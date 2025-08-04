@@ -1,6 +1,5 @@
-if (process.env.MIGRATE_TOOL) {
-  require("dotenv").config();
-}
+require("dotenv").config();
+
 
 const {
   DEV_USERNAME,
@@ -25,3 +24,4 @@ const dev = {
 };
 
 module.exports = { development: dev, test: null, production: null };
+
