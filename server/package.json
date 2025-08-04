@@ -13,7 +13,7 @@
     "mis": "cross-env MIGRATE_TOOL=true npx sequelize-cli db:seed:all --config config/dbConfig.js",
     "misu": "cross-env MIGRATE_TOOL=true npx sequelize-cli db:seed:undo --config config/dbConfig.js",
     "firstInit": "npm run mi && npm run misu && npm run mis && npm start",
-    "postinstall": "cd ../client && npm i"
+    "postinstall": ""
   },
   "keywords": [],
   "author": "",
