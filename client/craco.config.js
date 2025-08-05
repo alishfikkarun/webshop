@@ -11,7 +11,6 @@ module.exports = {
       "@data": resolvePath("./src/data"),
       "@context": resolvePath("./src/context"),
       "@hooks": resolvePath("./src/hooks"),
-module.exports = {
   devServer: (devServerConfig) => {
     devServerConfig.allowedHosts = "all";
     return devServerConfig;
